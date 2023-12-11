@@ -19,7 +19,7 @@ const AdvertWidget = () => {
         width="100%"
         height="auto"
         alt="advert"
-        src="http://localhost:3001/assets/hq720.jpg"
+        src="https://friend-flow.vercel.app/assets/hq720.jpg"
         style={{ borderRadius: "0.75rem", margin: "0.75rem 0" }}
       />
       <FlexBetween>
