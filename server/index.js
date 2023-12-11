@@ -31,7 +31,7 @@ app.use(bodyParser.json({ limit: "30mb", extended: true }));
 app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }));
 app.use(
   cors({
-    origin: ["https://friend-flow.vercel.app/"],
+    origin: ["https://friend-flow.vercel.app/_logs"],
     methods: ["POST", "GET"],
     credentials: true,
   })
