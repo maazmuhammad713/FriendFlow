@@ -64,16 +64,21 @@ app.use("/posts", postRoutes);
 
 /* MONGOOSE SETUP */
 const PORT = process.env.PORT || 6001;
-mongoose
-  .connect(process.env.MONGO_URL, {
+export const handler = async (event, context) => {
+  await mongoose.connect(process.env.MONGO_URL, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
-  })
-  .then(() => {
-    app.listen(PORT, () => console.log(`Server Port: ${PORT}`));
+  });
 
-    /* ADD DATA ONE TIME */
-    // User.insertMany(users);
-    // Post.insertMany(posts);
-  })
-  .catch((error) => console.log(`${error} did not connect`));
+  return new Promise((resolve) => {
+    const callback = (error, response) => {
+      mongoose.connection.close();
+      resolve(response);
+    };
+
+    app.listen(PORT, () => {
+      // Invoke the Express app with the event and context
+      app(event, context, callback);
+    });
+  });
+};
