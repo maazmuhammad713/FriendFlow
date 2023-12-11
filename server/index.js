@@ -38,6 +38,10 @@ app.use(
 );
 app.use("/assets", express.static(path.join(__dirname, "public/assets")));
 
+app.get("/", (req, res) => {
+  res.json("Hey");
+});
+
 /* FILE STORAGE */
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
