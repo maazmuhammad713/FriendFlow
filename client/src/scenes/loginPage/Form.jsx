@@ -72,6 +72,7 @@ const Form = () => {
       "https://friend-flow.vercel.app/auth/register",
       {
         method: "POST",
+        headers: { "Content-Type": "application/json" },
         body: formData,
       }
     );
