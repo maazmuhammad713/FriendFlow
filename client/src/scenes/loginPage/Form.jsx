@@ -71,6 +71,7 @@ const Form = () => {
     const savedUserResponse = await fetch(
       "https://friend-flow.vercel.app/auth/register",
       {
+        mode: "no-cors",
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: formData,
@@ -96,6 +97,7 @@ const Form = () => {
     const loggedInResponse = await fetch(
       "https://friend-flow.vercel.app/auth/login",
       {
+        mode: "no-cors",
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(values),
